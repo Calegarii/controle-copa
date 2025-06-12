@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Permanência</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header><h1>Relatório de Permanência</h1></header>
+
+    <form id="filtro" style="margin-bottom:1rem">
+        <label>Data início: <input type="date" name="start" required></label>
+        <label>Data fim: <input type="date" name="end" required></label>
+        <label>Colaborador:
+            <select name="colab" id="colabSelect">
+                <option value="">Todos</option>
+            </select>
+        </label>
+        <label>Empresa:
+            <select name="empresa" id="empresaSelect">
+                <option value="">Todas</option>
+            </select>
+        </label>
+        <label>Período:
+            <select name="periodo">
+                <option value="">Todos</option>
+                <option value="MATUTINO">MATUTINO</option>
+                <option value="VESPERTINO">VESPERTINO</option>
+                <option value="NOTURNO">NOTURNO</option>
+            </select>
+        </label>
+        <label>Tempo mínimo (min): <input type="number" name="minutos_min" value="11"></label><button type="submit">Buscar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script src="../js/relatorio.js"></script>
+</body>
+</html>

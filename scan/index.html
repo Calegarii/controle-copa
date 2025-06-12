@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Escanear QR Code</title>
+    <link rel="stylesheet" href="../css/scan.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+    <header>
+        <h1>Escanear QR Code</h1>
+    </header>
+    <div class="scan-container">
+        <label for="camera-select">Selecionar Câmera:</label>
+        <select id="camera-select"></select>
+        <button class="btn-scan" onclick="openModal()">📷 Abrir Scanner</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="reader" style="width: 100%;"></div>
+        </div>
+    </div>
+
+    <script src="../js/scan.js"></script>
+</body>
+</html>
