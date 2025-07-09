@@ -53,11 +53,27 @@
                 <input type="text" name="nome" placeholder="Nome" required>
                 <div style="display:flex;gap:10px;"><input type="text" name="codigo" placeholder="Código (texto do QR)" required><button type="button" id="gerarCodigoBtn">Gerar Código</button></div>
                 <input type="text" name="empresa" placeholder="Empresa" required>
+
+<select name="ativo" required>
+    <option value="1" selected>Ativo</option>
+    <option value="0">Inativo</option>
+</select>
+
                 <button type="submit">Cadastrar</button>
             </form>
 
             <h2>Colaboradores Cadastrados</h2>
-            <table id="tabela">
+            
+<div style="margin-bottom: 10px;">
+  <label for="filtroAtivo">Filtrar:</label>
+  <select id="filtroAtivo" onchange="carregar()">
+    <option value="1" selected>Ativos</option>
+    <option value="0">Inativos</option>
+    <option value="-1">Todos</option>
+  </select>
+</div>
+
+<table id="tabela">
                 <thead><tr><th>Nome</th><th>Código</th><th>QR Code</th><th>Empresa</th><th>Ações</th></tr></thead>
                 <tbody></tbody>
             </table>
