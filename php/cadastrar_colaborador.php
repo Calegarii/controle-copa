@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome    = $_POST['nome'] ?? '';
     $codigo  = $_POST['codigo'] ?? '';
     $empresa = $_POST['empresa'] ?? '';
+    $ativo   = isset($_POST['ativo']) ? (int)$_POST['ativo'] : 1;
 
     if (!$nome || !$codigo) {
         echo "Nome e código são obrigatórios.";
@@ -24,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Atualização
-        $stmt = $conn->prepare("UPDATE colaboradores SET nome = ?, codigo_qr = ?, empresa = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $nome, $codigo, $empresa, $id);
+        $stmt = $conn->prepare("UPDATE colaboradores SET nome = ?, codigo_qr = ?, empresa = ?, ativo = ? WHERE id = ?");
+        $stmt->bind_param("sssii", $nome, $codigo, $empresa, $ativo, $id);
     } else {
         // Inserção
-        $stmt = $conn->prepare("INSERT INTO colaboradores (nome, codigo_qr, empresa) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $nome, $codigo, $empresa);
+        $stmt = $conn->prepare("INSERT INTO colaboradores (nome, codigo_qr, empresa, ativo) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $nome, $codigo, $empresa, $ativo);
     }
 
     if ($stmt->execute()) {

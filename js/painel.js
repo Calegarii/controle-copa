@@ -1,5 +1,5 @@
 const container = document.getElementById('panel');
-const ALERT_AFTER = 1 * 60;  // segundos
+const ALERT_AFTER = 5 * 60;  // segundos
 const REPEAT_EVERY = 10;     // segundos
 const alerted = {};
 

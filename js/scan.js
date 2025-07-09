@@ -34,6 +34,26 @@ function startScan() {
             qrbox: { width: 250, height: 250 }
         },
         qrCodeSuccessCallback
+
+    ).then(() => {
+    const mirrorInterval = setInterval(() => {
+        const video = document.querySelector("#reader video");
+        const canvas = document.querySelector("#reader canvas");
+        if (video) {
+            const select = document.getElementById("camera-select");
+            const lbl = Array.from(select.options).find(o => o.value === selectedCameraId)?.text.toLowerCase();
+            const isFront = lbl && lbl.includes('front');
+            if (isFront) {
+                video.style.transform = 'scaleX(-1)';
+                if (canvas) canvas.style.transform = 'scaleX(-1)';
+            } else {
+                video.style.transform = '';
+                if (canvas) canvas.style.transform = '';
+            }
+            clearInterval(mirrorInterval);
+        }
+    }, 200);
+}
     ).catch(err => console.error("Erro ao iniciar o scanner:", err));
 }
 
@@ -49,6 +69,7 @@ function openModal() {
 }
 
 function closeModal() {
+    const v=document.querySelector('#reader video'); if(v) v.classList.remove('mirror');
     document.getElementById("modal").style.display = "none";
     stopScan();
 }
